@@ -13,7 +13,7 @@ fun main() {
     println("Amount paid before: $amountPaid")
     amountPaid += 5000
     println("Amount paid after: $amountPaid")
-
+    // task1.3:uncomment to run it
     // tenantId = 1002
     // IntelliJ/Kotlin error: "Val cannot be reassigned"
 
