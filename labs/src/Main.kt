@@ -1,5 +1,4 @@
 fun main() {
-    // PART 0 - Setup
     println("Welcome to the Tenant Management System")
 
     // PART 1 - Variables
