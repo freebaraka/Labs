@@ -39,23 +39,35 @@ fun main() {
     println(registrationNumber)
 
     // PART 3 - Strings
+    println("\n===== PART 3 =====")
+
+    // Task 3.1 - Concatenation
     println(tenantName + " lives in house " + houseNumber)
+
+    // Task 3.2 - String Template
     println("$tenantName lives in house $houseNumber")
+    // Compare the two versions. Which is easier to read? The string template version is much easier to read. It avoids the visual clutter of breaking the string apart with plus signs and extra quotes.
+
+    // Task 3.3 - Template Expression
     println("Total rent for 6 months: KES ${monthlyRent * 6}")
 
+    // Task 3.4 - Triple-quoted String
     val receipt = """
-         RENT RECEIPT 
+        ===== RENT RECEIPT =====
         Tenant: $tenantName
         House: $houseNumber
         Paid: KES $amountPaid
     """.trimIndent()
     println(receipt)
+    // What happens to the indentation of your triple-quoted string when you run it? Without .trimIndent(), a raw string preserves the exact indentation from your IDE, meaning the text is pushed far to the right in the console.
+    // Investigate .trimIndent() and explain what it does. It finds the common minimum leading whitespace across all lines in the raw string and removes it, allowing your code to be indented cleanly in the IDE while printing flush to the left margin in the console.
 
+    // Task 3.5 - Predict first
     val greeting = "Dear Tenant"
-    // Calling greeting.uppercase() alone would do nothing useful here: Strings are immutable,
-    // so the call returns a new String that must be captured (or printed) to be of any use.
+    greeting.uppercase()
     println(greeting)
-    println("Uppercase shown correctly: ${greeting.uppercase()}")
+    // Why is greeting unchanged? Strings in Kotlin are immutable. The .uppercase() function does not modify the original string; it creates and returns a brand-new uppercase string, which is immediately discarded here because it wasn't assigned to anything.
+    // What would you have to write to actually see the uppercase version? You must either print the result directly via println(greeting.uppercase()) or store it in a new variable like val upperGreeting = greeting.uppercase() and print that.
 
     // PART 4 - Operators
     println("\n===== PART 4 =====")
@@ -226,6 +238,7 @@ fun main() {
     }
 
     // Part 7 - Lists and Arrays
+    println("\n Part 7")
     // Task 7.1 - Creating  a List
     val tenantList = mutableListOf("Jane Wanjiku", "Brian Otieno", "Mary Achieng", "John Kamau")
     println("First tenant:" + tenantList[0])
@@ -250,17 +263,17 @@ fun main() {
     println("After change:" + houseNumbers.joinToString(" "))
 
     // Task 7.4 - Printing arrays
-    val houseNumbers = arrayOf("A-101", "A-102")
-    println(houseNumbers)
+    val house_Numbers = arrayOf("A-101", "A-102")
+    println(house_Numbers)
 
     // Arrays in Kotlin do not override toString(), so they print the object's memory address.
 
     // Method 1: joinToString
-    //println(houseNumbers.joinToString())
+    //println(house_Numbers.joinToString())
 
     //Method 2: Arrays.toString (needs import)
     //import java.util.Arrays
-    //println(Arrays.toString(houseNumbers))
+    //println(Arrays.toString(house_Numbers))
 
     // Task 7.5 - Combining arrays
     val blockA = intArrayOf(1, 2, 3)
