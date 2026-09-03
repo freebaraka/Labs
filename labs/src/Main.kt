@@ -169,4 +169,62 @@ fun main() {
         }
         println("$status -> $message")
     }
+
+
+
+
+    // PART 6 - Ranges and Loops
+    println("\n PART 6 ")
+
+// Task 6.1
+// Print every month number of the year, from 1 to 12
+    println("--- Task 6.1 ---")
+    for (month in 1..12) {
+        println(month)
+    }
+
+// Task 6.2
+// Check every second month of the year
+    println("--- Task 6.2 ---")
+    for (month in 1..12 step 2) {
+        println("Checking payment history for month $month")
+    }
+
+// Task 6.3
+// Countdown from 5 down to 1
+    println("--- Task 6.3 ---")
+    for (month in 5 downTo 1) {
+        println(month)
+    }
+
+// Task 6.4
+// Print tenants with their position
+    println("--- Task 6.4 ---")
+    val tenants = listOf("Jane", "Brian", "Mary", "David")
+
+    for ((index, tenant) in tenants.withIndex()) {
+        println("${index + 1}. $tenant")
+    }
+
+// Task 6.5
+// Compare while and do-while when vacantHouses is 0
+    println("--- Task 6.5 ---")
+    var vacantHouses = 0
+
+// Version A: while
+    while (vacantHouses > 0) {
+        println("Checking vacant houses...")
+    }
+
+// Version B: do-while
+    do {
+        println("Checking vacant houses...")
+    } while (vacantHouses > 0)
+
+// Task 6.6
+// Print the reminder exactly 3 times
+    println("--- Task 6.6 ---")
+    repeat(3) {
+        println("Please pay your rent.")
+    }
 }
