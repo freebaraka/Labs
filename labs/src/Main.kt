@@ -319,7 +319,7 @@ fun main() {
 
     // Task 8.3
     println("Email: ${tenantEmail ?: "Not provided"}")
-    tenantEmail = "jane@example.com"
+    tenantEmail = "jane@gmail.com"
     println("Email: ${tenantEmail ?: "Not provided"}")
 
     // Task 8.4 - Predict first
