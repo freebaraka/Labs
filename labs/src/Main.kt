@@ -15,7 +15,7 @@ fun main() {
     println("Amount paid after: $amountPaid")
     // task1.3:uncomment to run it
     // tenantId = 1002
-    // IntelliJ/Kotlin error: "Val cannot be reassigned"
+    // Kotlin error: "Val cannot be reassigned"
 
     // PART 2 - Data Types and Casting
     val tenantIdTyped: Int = 1001
