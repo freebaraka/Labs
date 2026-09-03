@@ -215,6 +215,9 @@ fun main() {
         println("${index + 1}. $tenant")
     }
 
+    //Because indexes start at 0 so it is used to give output from 1
+
+
 // Task 6.5
 // Compare while and do-while when vacantHouses is 0
     println("--- Task 6.5 ---")
@@ -229,6 +232,9 @@ fun main() {
     do {
         println("Checking vacant houses...")
     } while (vacantHouses > 0)
+
+    // A while loop checks the condition before it runs while a do-while runs first then checks the condition after
+
 
 // Task 6.6
 // Print the reminder exactly 3 times
