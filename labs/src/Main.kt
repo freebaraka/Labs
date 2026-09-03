@@ -277,38 +277,4 @@ fun main() {
     // Task 7.6 - Differences
     // A MutableList can dynamically add or remove elements while an array cannot
     // An Array allows modification of its elements while a read-only list cannot
-
-    // PART 8 - Null Safety
-    println("\n===== PART 8 =====")
-
-    // Task 8.1 - Break it deliberately
-    // val brokenEmail: String = null
-    // What is the error? Null can not be a value of a non-null type String.
-    // What is the single character you must add to make it legal? The question mark (?), turning String into String?
-
-    // Task 8.2
-    var tenantEmail: String? = null
-    println(tenantEmail)
-    // Would you show that output to a property manager? Why not? No. "null" is a raw programming term that looks like a system error to non-technical end users. A property manager needs a human-readable fallback phrase, such as "Not provided" or an empty text field.
-
-    // Task 8.3
-    println("Email: ${tenantEmail ?: "Not provided"}")
-    tenantEmail = "jane@example.com"
-    println("Email: ${tenantEmail ?: "Not provided"}")
-
-    // Task 8.4 - Predict first
-    tenantEmail = null
-    println(tenantEmail?.length)      // Output: null
-    println(tenantEmail?.length ?: 0) // Output: 0
-
-    // println(tenantEmail!!.length) // Commented out to prevent runtime crash
-    // What does the third line do, and what is it called? It bypasses compiler safety checks to force the length calculation, immediately throwing a NullPointerException and crashing the program because the variable is null. It is called the non-null assertion operator.
-    // When, if ever, would you be justified in using it? It is rarely justified, but acceptable when interfacing with external Java libraries where the compiler cannot determine nullability, or when your internal logic strictly guarantees a value exists but the Kotlin compiler's static analyzer cannot verify it.
-
-    // Task 8.5
-    var nextOfKin: String? = null
-    println(nextOfKin?.uppercase() ?: "NO NEXT OF KIN ON RECORD")
-
-    nextOfKin = "Brian Otieno"
-    println(nextOfKin?.uppercase() ?: "NO NEXT OF KIN ON RECORD")
 }
