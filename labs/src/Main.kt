@@ -41,7 +41,7 @@ fun main() {
     println("Total rent for 6 months: KES ${monthlyRent * 6}")
 
     val receipt = """
-        ===== RENT RECEIPT =====
+         RENT RECEIPT 
         Tenant: $tenantName
         House: $houseNumber
         Paid: KES $amountPaid
