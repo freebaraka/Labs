@@ -170,14 +170,11 @@ fun main() {
         println("$status -> $message")
     }
 
-
-
-
     // PART 6 - Ranges and Loops
     println("\n PART 6 ")
 
-// Task 6.1
-// Print every month number of the year, from 1 to 12
+    // Task 6.1
+    // Print every month number of the year, from 1 to 12
     println("--- Task 6.1 ---")
     for (month in 1..12) {
         println(month)
@@ -227,4 +224,57 @@ fun main() {
     repeat(3) {
         println("Please pay your rent.")
     }
+
+    // Part 7 - Lists and Arrays
+    // Task 7.1 - Creating  a List
+    val tenantList = mutableListOf("Jane Wanjiku", "Brian Otieno", "Mary Achieng", "John Kamau")
+    println("First tenant:" + tenantList[0])
+    println("Last tenant:" + tenantList[tenantList.size - 1])
+
+    // Task 7.2 - Break it deliberately
+    // tenantList.add("David Mwangi")
+    // Error:
+    // Kotlin: Unresolved reference 'add'.
+    // How to fix: Change listOf to mutableListOf
+
+    tenantList.add("David Mwangi")
+    tenantList.remove("Brian Otieno")
+    println(tenantList)
+    println("Size: " + tenantList.size)
+
+    // Task 7.3 - Arrays
+    val houseNumbers = arrayOf("A-101", "A-102", "A-103", "A-104")
+    println("Second house: " + houseNumbers[1])
+
+    houseNumbers[0] = "A-201"
+    println("After change:" + houseNumbers.joinToString(" "))
+
+    // Task 7.4 - Printing arrays
+    val houseNumbers = arrayOf("A-101", "A-102")
+    println(houseNumbers)
+
+    // Arrays in Kotlin do not override toString(), so they print the object's memory address.
+
+    // Method 1: joinToString
+    //println(houseNumbers.joinToString())
+
+    //Method 2: Arrays.toString (needs import)
+    //import java.util.Arrays
+    //println(Arrays.toString(houseNumbers))
+
+    // Task 7.5 - Combining arrays
+    val blockA = intArrayOf(1, 2, 3)
+    val blockB = intArrayOf(4, 5, 6)
+    val combined = blockA + blockB
+    println(combined.joinToString())
+
+    // Yes, the order matched prediction
+    // swap order:
+    val combined2 = blockB + blockA
+    println(combined2.joinToString())
+    // Rule: The + operator concatenates arrays in the order they appear
+
+    // Task 7.6 - Differences
+    // A MutableList can dynamically add or remove elements while an array cannot
+    // An Array allows modification of its elements while a read-only list cannot
 }
