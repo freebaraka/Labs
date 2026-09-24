@@ -7,6 +7,22 @@
 
 //Tenant Class Creation for Lab 3
 // Task 1(Part 1) : Tenant Class
+/*class Tenant(
+    var name: String="",
+    var apartmentNumber: Int=0,
+    var rentAmount: Double=0.0,
+    var isPaid: Boolean = false
+) {
+
+    //Part 2: Function to process rent payment
+    fun payRent() {
+        isPaid = true
+        println("Rent paid successfully by $name")
+    }
+}*/
+
+//Task 2-Improve Tenant Class Using Primary Constructor
+
 class Tenant(
     var name: String,
     var apartmentNumber: Int,
@@ -14,7 +30,6 @@ class Tenant(
     var isPaid: Boolean = false
 ) {
 
-    //Part 2: Function to process rent payment
     fun payRent() {
         isPaid = true
         println("Rent paid successfully by $name")
@@ -360,12 +375,21 @@ fun main() {
     //TASK 1 CONTINUATION
     //Part 3: Testing the class
     // 1 & 2: Creating the objects
-    val tenant1 = Tenant("Jane Wanjiku", 101, 25000.0)
-    val tenant2 = Tenant("Brian Koech", 204, 30000.0)
+   /* val tenant1 = Tenant()
 
+ tenant1.name = "Jane Wanjiku"
+ tenant1.apartmentNumber = 101
+ tenant1.rentAmount = 25000.0
+
+ val tenant2 = Tenant()
+ tenant2.name = "Brian Koech"
+ tenant2.apartmentNumber = 204
+ tenant2.rentAmount = 30000.0 */
     // 3. Call payRent() function for only one tenant
-    tenant1.payRent()
+    //tenant1.payRent()
 
+   // println("${tenant1.name} rent paid: ${tenant1.isPaid}")
+    //println("${tenant2.name} rent paid: ${tenant2.isPaid}")
     /*
      * THINK ABOUT IT:
      * Two objects created from the same Tenant class can have different names, apartment numbers, and payment statuses
@@ -374,4 +398,22 @@ fun main() {
      * Because tenant1 and tenant2 point to different locations in memory, they hold their own
      * unique state (values) independently of one another, even though they share the same structure.
      */
+
+
+    //Task 2- Testing the Constructor
+    //2.1Creation of two tenant objects
+    val tenant1 = Tenant("Jane Wanjiku", 101, 25000.0)
+    val tenant2 = Tenant("Brian Koech", 204, 30000.0)
+
+    //2.2 Call payRent() on one tenant
+
+    tenant1.payRent()
+
+    //2.3 Display payment status for both tenants
+    println("${tenant1.name} rent paid: ${tenant1.isPaid}")
+    println("${tenant2.name} rent paid: ${tenant2.isPaid}")
+
+
+    /* The advantage of using a constructor is that it allows us to initialize the tenant's
+    properties when creating the object*/
 }
