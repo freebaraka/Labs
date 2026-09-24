@@ -32,6 +32,13 @@ class Tenant(
 
     // Store rent in a property whose setter rejects negative amounts.
     var rentAmount: Double = rentAmount
+        // Task 4 - The getter runs whenever rentAmount is read.
+        get() {
+            println("Rent amount accessed.")
+            // field holds the stored rent; using rentAmount here would call this getter again.
+            return field
+        }
+        // Getting reads the stored value; setting tries to replace it with a new value.
         set(value) {
             if (value >= 0) {
                 field = value
@@ -44,6 +51,12 @@ class Tenant(
         isPaid = true
         println("Rent paid successfully by $name")
     }
+}
+
+// Task 5 - An Apartment has Tenant objects stored in its list (composition).
+class Apartment(var apartmentNumber: Int) {
+    // Each apartment starts with its own empty list that can grow as tenants are added.
+    val tenants: MutableList<Tenant> = mutableListOf()
 }
 
 fun main() {
@@ -433,4 +446,34 @@ fun main() {
     println("Rent after attempted change: ${validationTenant.rentAmount}")
     println("Was the negative rent accepted? ${validationTenant.rentAmount < 0}")
     // Validating before storing prevents invalid data from spreading through later calculations.
+
+    // Task 4 - Reading the rent prints the getter's message before printing the stored amount.
+    println(validationTenant.rentAmount)
+
+    /*
+     * THINK ABOUT IT:
+     * When is the getter executed? Every time we read rentAmount, including inside
+     * println() or a calculation. Here, it prints "Rent amount accessed." and returns
+     * 18000.0, which println() then displays. The Task 3 reads also call this getter.
+     *
+     * Getting a property reads its value without changing it. Setting a property,
+     * such as validationTenant.rentAmount = 20000.0, calls the setter to update it.
+     * Our setter checks the new amount first and keeps the old value if it is negative.
+     */
+
+    // Task 5 - Create an apartment; its tenant list is empty until tenants are added.
+    val apartment = Apartment(101)
+    println("Apartment: ${apartment.apartmentNumber}")
+    println("Number of tenants: ${apartment.tenants.size}")
+
+    /*
+     * THINK ABOUT IT:
+     * An Apartment "has" Tenant objects because its tenants list can hold references
+     * to those objects. This is composition: we build a class using other objects.
+     * Each Tenant still holds its own name, rent amount and payment status.
+     *
+     * MutableList<Tenant> stores Tenant objects, not just their names, and lets us
+     * add or remove them later. The list starts empty, so its size is currently 0.
+     * Using val means we cannot replace the list, but we can still change its contents.
+     */
 }
