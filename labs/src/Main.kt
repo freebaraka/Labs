@@ -483,31 +483,30 @@ fun main() {
      * add or remove them later. The list starts empty, so its size is currently 0.
      * Using val means we cannot replace the list, but we can still change its contents.
      */
-
-// --- Task 6 test, inside main() ---
+    // --- Task 6 test, inside main() ---
     println("--- Task 6 ---")
 
 // 1. Create an Apartment object
-    val apartmentOne = Apartment(101)
+    val apartment101 = Apartment(101)
 
 // 2. Create two Tenant objects
-    val tenantOne = Tenant("Ian", 101, 15000.0)
-    val tenantTwo = Tenant("Simon", 101, 18000.0)
+    val ianTenant = Tenant("Ian", 101, 15000.0)
+    val simonTenant = Tenant("Simon", 101, 18000.0)
 
 // 3. Add both tenants to the apartment
-    apartmentOne.addTenant(tenantOne)
-    apartmentOne.addTenant(tenantTwo)
+    apartment101.addTenant(ianTenant)
+    apartment101.addTenant(simonTenant)
 
 // 4. Verify that both tenants are stored in the apartment
-    println("Tenants in apartment: ${apartmentOne.tenants.size}")
-    for (tenant in apartmentOne.tenants) {
+    println("Tenants in apartment: ${apartment101.tenants.size}")
+    for (tenant in apartment101.tenants) {
         println("Stored tenant: ${tenant.name}")
     }
 
-    /*  What does it mean when we say that an Apartment has
-    Tenant objects? It means composition - the Apartment class doesn't
-    become a Tenant or inherit from it. It simply keeps a list of Tenant
-    objects as one of its own properties, and uses that list (via
-    addTenant()) to manage which tenants belong to it. */
+//  What does it mean when we say that an Apartment has
+// Tenant objects? It means composition - the Apartment class doesn't
+// become a Tenant or inherit from it. It simply keeps a list of Tenant
+// objects as one of its own properties, and uses that list (via
+// addTenant()) to manage which tenants belong to it.
 
 }
