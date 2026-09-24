@@ -52,20 +52,25 @@ class Tenant(
         println("Rent paid successfully by $name")
     }
 }
-// Inside the Apartment class (declared at file level, above main()):
-class Apartment(val apartmentNumber: Int) {
-
 // Task 5 - An Apartment has Tenant objects stored in its list (composition).
-class Apartment(var apartmentNumber: Int) {
+class Apartment(val apartmentNumber: Int) {
     // Each apartment starts with its own empty list that can grow as tenants are added.
-    val tenants: MutableList<Tenant> = mutableListOf()
-}
-
     val tenants: MutableList<Tenant> = mutableListOf()
 
     // Task 6 - add the supplied tenant to this apartment's list of tenants
     fun addTenant(tenant: Tenant) {
         tenants.add(tenant)
+    }
+
+    // Task 7 - Display the apartment number, then visit each tenant in its list.
+    fun showTenants() {
+        println("Apartment: $apartmentNumber")
+        for (tenant in tenants) {
+            println("Tenant: ${tenant.name}")
+            // Reading rentAmount calls the custom getter before printing the rent.
+            println("Rent: ${tenant.rentAmount}")
+            println("Rent paid: ${tenant.isPaid}")
+        }
     }
 }
 fun main() {
@@ -484,7 +489,6 @@ fun main() {
      * Using val means we cannot replace the list, but we can still change its contents.
      */
     // --- Task 6 test, inside main() ---
-    println("--- Task 6 ---")
 
 // 1. Create an Apartment object
     val apartment101 = Apartment(101)
@@ -509,4 +513,8 @@ fun main() {
 // objects as one of its own properties, and uses that list (via
 // addTenant()) to manage which tenants belong to it.
 
+    // Task 7 - Pay rent for Ian only, then display both tenants' details.
+    ianTenant.payRent()
+    apartment101.showTenants()
+    // The list holds the same tenant objects, so Ian now shows true and Simon stays false.
 }
