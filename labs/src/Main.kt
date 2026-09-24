@@ -5,6 +5,22 @@
 // 176676 - Daniella Wanjohi
 // 189808 - Ian Simiyu
 
+//Tenant Class Creation for Lab 3
+// Task 1(Part 1) : Tenant Class
+class Tenant(
+    var name: String,
+    var apartmentNumber: Int,
+    var rentAmount: Double,
+    var isPaid: Boolean = false
+) {
+
+    //Part 2: Function to process rent payment
+    fun payRent() {
+        isPaid = true
+        println("Rent paid successfully by $name")
+    }
+}
+
 fun main() {
     println("Welcome to the Tenant Management System")
 
@@ -225,26 +241,25 @@ fun main() {
     //Because indexes start at 0 so it is used to give output from 1
 
 
-// Task 6.5
-// Compare while and do-while when vacantHouses is 0
+    // Task 6.5
+    // Compare while and do-while when vacantHouses is 0
     println("--- Task 6.5 ---")
     var vacantHouses = 0
 
-// Version A: while
+    // Version A: while
     while (vacantHouses > 0) {
         println("Checking vacant houses...")
     }
 
-// Version B: do-while
+    // Version B: do-while
     do {
         println("Checking vacant houses...")
     } while (vacantHouses > 0)
 
     // A while loop checks the condition before it runs while a do-while runs first then checks the condition after
 
-
-// Task 6.6
-// Print the reminder exactly 3 times
+    // Task 6.6
+    // Print the reminder exactly 3 times
     println("--- Task 6.6 ---")
     repeat(3) {
         println("Please pay your rent.")
@@ -338,4 +353,25 @@ fun main() {
     nextOfKin = "Brian Otieno"
     println(nextOfKin?.uppercase() ?: "NO NEXT OF KIN ON RECORD")
 
+    //=============
+    //----LAB 3----
+    //=============
+
+    //TASK 1 CONTINUATION
+    //Part 3: Testing the class
+    // 1 & 2: Creating the objects
+    val tenant1 = Tenant("Jane Wanjiku", 101, 25000.0)
+    val tenant2 = Tenant("Brian Koech", 204, 30000.0)
+
+    // 3. Call payRent() function for only one tenant
+    tenant1.payRent()
+
+    /*
+     * THINK ABOUT IT:
+     * Two objects created from the same Tenant class can have different names, apartment numbers, and payment statuses
+     * because a class simply acts as a blueprint or template. When you create an object
+     * from that class, the program allocates a separate, independent block of memory for it.
+     * Because tenant1 and tenant2 point to different locations in memory, they hold their own
+     * unique state (values) independently of one another, even though they share the same structure.
+     */
 }
