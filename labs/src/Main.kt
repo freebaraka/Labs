@@ -53,10 +53,10 @@ class Tenant(
     }
 }
 // Inside the Apartment class (declared at file level, above main()):
-class Apartment(val apartmentNumber: Int) {
+// class Apartment(val apartmentNumber: Int) {
 
 // Task 5 - An Apartment has Tenant objects stored in its list (composition).
-class Apartment(var apartmentNumber: Int) {
+// class Apartment(var apartmentNumber: Int) {
     // Each apartment starts with its own empty list that can grow as tenants are added.
     val tenants: MutableList<Tenant> = mutableListOf()
 }
@@ -510,25 +510,26 @@ fun main() {
     // become a Tenant or inherit from it. It simply keeps a list of Tenant
     // objects as one of its own properties, and uses that list (via
     // addTenant()) to manage which tenants belong to it.
+    }
 
     // Task 7 - Display tenant apartments
     class Apartment(var apartmentNumber: Int) {
-        // We use mutableListOf() because it creates a modifiable list
-        val tenants: MutableList<Tenant> = mutableListOf()
+    val tenants: MutableList<Tenant> = mutableListOf()
 
-        fun addTenant(tenant: Tenant) {
-            tenants.add(tenant)
-        }
+    fun addTenant(tenant: Tenant) {
+        tenants.add(tenant)
+    }
 
-        // Function to display details for every tenant in the apartment
-        fun showTenants() {
-            println("Apartment: $apartmentNumber")
-            for (tenant in tenants) {
-                println("Tenant: ${tenant.name}")
-                println("Rent: ${tenant.rentAmount}")
-                println("Rent paid: ${tenant.isPaid}")
-            }
+    // Function to display details for every tenant in the apartment
+    fun showTenants() {
+        println("Apartment: $apartmentNumber")
+        for (tenant in tenants) {
+            println("Tenant: ${tenant.name}")
+            println("Rent: ${tenant.rentAmount}")
+            println("Rent paid: ${tenant.isPaid}")
         }
     }
 }
+
+
 
