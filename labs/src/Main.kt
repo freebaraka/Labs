@@ -26,9 +26,19 @@
 class Tenant(
     var name: String,
     var apartmentNumber: Int,
-    var rentAmount: Double,
+    rentAmount: Double,
     var isPaid: Boolean = false
 ) {
+
+    // Store rent in a property whose setter rejects negative amounts.
+    var rentAmount: Double = rentAmount
+        set(value) {
+            if (value >= 0) {
+                field = value
+            } else {
+                println("Rent amount cannot be negative.")
+            }
+        }
 
     fun payRent() {
         isPaid = true
@@ -416,4 +426,11 @@ fun main() {
 
     /* The advantage of using a constructor is that it allows us to initialize the tenant's
     properties when creating the object*/
+
+    // Task 3 - Test rent validation with a valid rent, then try to assign a negative rent.
+    val validationTenant = Tenant("Mary Achieng", 305, 18000.0)
+    validationTenant.rentAmount = -5000.0
+    println("Rent after attempted change: ${validationTenant.rentAmount}")
+    println("Was the negative rent accepted? ${validationTenant.rentAmount < 0}")
+    // Validating before storing prevents invalid data from spreading through later calculations.
 }
