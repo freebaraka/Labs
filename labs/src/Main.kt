@@ -52,6 +52,8 @@ class Tenant(
         println("Rent paid successfully by $name")
     }
 }
+// Inside the Apartment class (declared at file level, above main()):
+class Apartment(val apartmentNumber: Int) {
 
 // Task 5 - An Apartment has Tenant objects stored in its list (composition).
 class Apartment(var apartmentNumber: Int) {
@@ -59,6 +61,13 @@ class Apartment(var apartmentNumber: Int) {
     val tenants: MutableList<Tenant> = mutableListOf()
 }
 
+    val tenants: MutableList<Tenant> = mutableListOf()
+
+    // Task 6 - add the supplied tenant to this apartment's list of tenants
+    fun addTenant(tenant: Tenant) {
+        tenants.add(tenant)
+    }
+}
 fun main() {
     println("Welcome to the Tenant Management System")
 
@@ -437,8 +446,6 @@ fun main() {
     println("${tenant2.name} rent paid: ${tenant2.isPaid}")
 
 
-    /* The advantage of using a constructor is that it allows us to initialize the tenant's
-    properties when creating the object*/
 
     // Task 3 - Test rent validation with a valid rent, then try to assign a negative rent.
     val validationTenant = Tenant("Mary Achieng", 305, 18000.0)
@@ -476,4 +483,30 @@ fun main() {
      * add or remove them later. The list starts empty, so its size is currently 0.
      * Using val means we cannot replace the list, but we can still change its contents.
      */
+    // --- Task 6 test, inside main() ---
+    println("--- Task 6 ---")
+
+// 1. Create an Apartment object
+    val apartment101 = Apartment(101)
+
+// 2. Create two Tenant objects
+    val ianTenant = Tenant("Ian", 101, 15000.0)
+    val simonTenant = Tenant("Simon", 101, 18000.0)
+
+// 3. Add both tenants to the apartment
+    apartment101.addTenant(ianTenant)
+    apartment101.addTenant(simonTenant)
+
+// 4. Verify that both tenants are stored in the apartment
+    println("Tenants in apartment: ${apartment101.tenants.size}")
+    for (tenant in apartment101.tenants) {
+        println("Stored tenant: ${tenant.name}")
+    }
+
+//  What does it mean when we say that an Apartment has
+// Tenant objects? It means composition - the Apartment class doesn't
+// become a Tenant or inherit from it. It simply keeps a list of Tenant
+// objects as one of its own properties, and uses that list (via
+// addTenant()) to manage which tenants belong to it.
+
 }
