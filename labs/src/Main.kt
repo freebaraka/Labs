@@ -3,7 +3,7 @@
 // 191627 - Onserio Baraka Osumo
 // 191636 - Bethuel Kilonzo
 // 176676 - Daniella Wanjohi
-// 189808 - Ian Simiyu
+// 189808 - Ian Siminyu
 
 //Tenant Class Creation for Lab 3
 // Task 1(Part 1) : Tenant Class
@@ -409,14 +409,14 @@ fun main() {
     // 1 & 2: Creating the objects
    /* val tenant1 = Tenant()
 
- tenant1.name = "Jane Wanjiku"
- tenant1.apartmentNumber = 101
- tenant1.rentAmount = 25000.0
+    tenant1.name = "Jane Wanjiku"
+    tenant1.apartmentNumber = 101
+    tenant1.rentAmount = 25000.0
 
- val tenant2 = Tenant()
- tenant2.name = "Brian Koech"
- tenant2.apartmentNumber = 204
- tenant2.rentAmount = 30000.0 */
+    val tenant2 = Tenant()
+    tenant2.name = "Brian Koech"
+    tenant2.apartmentNumber = 204
+    tenant2.rentAmount = 30000.0 */
     // 3. Call payRent() function for only one tenant
     //tenant1.payRent()
 
@@ -483,30 +483,52 @@ fun main() {
      * add or remove them later. The list starts empty, so its size is currently 0.
      * Using val means we cannot replace the list, but we can still change its contents.
      */
+
+
     // --- Task 6 test, inside main() ---
     println("--- Task 6 ---")
 
-// 1. Create an Apartment object
+    // 1. Create an Apartment object
     val apartment101 = Apartment(101)
 
-// 2. Create two Tenant objects
+    // 2. Create two Tenant objects
     val ianTenant = Tenant("Ian", 101, 15000.0)
     val simonTenant = Tenant("Simon", 101, 18000.0)
 
-// 3. Add both tenants to the apartment
+    // 3. Add both tenants to the apartment
     apartment101.addTenant(ianTenant)
     apartment101.addTenant(simonTenant)
 
-// 4. Verify that both tenants are stored in the apartment
+    // 4. Verify that both tenants are stored in the apartment
     println("Tenants in apartment: ${apartment101.tenants.size}")
     for (tenant in apartment101.tenants) {
         println("Stored tenant: ${tenant.name}")
     }
 
-//  What does it mean when we say that an Apartment has
-// Tenant objects? It means composition - the Apartment class doesn't
-// become a Tenant or inherit from it. It simply keeps a list of Tenant
-// objects as one of its own properties, and uses that list (via
-// addTenant()) to manage which tenants belong to it.
+    //  What does it mean when we say that an Apartment has
+    // Tenant objects? It means composition - the Apartment class doesn't
+    // become a Tenant or inherit from it. It simply keeps a list of Tenant
+    // objects as one of its own properties, and uses that list (via
+    // addTenant()) to manage which tenants belong to it.
 
+    // Task 7 - Display tenant apartments
+    class Apartment(var apartmentNumber: Int) {
+        // We use mutableListOf() because it creates a modifiable list
+        val tenants: MutableList<Tenant> = mutableListOf()
+
+        fun addTenant(tenant: Tenant) {
+            tenants.add(tenant)
+        }
+
+        // Function to display details for every tenant in the apartment
+        fun showTenants() {
+            println("Apartment: $apartmentNumber")
+            for (tenant in tenants) {
+                println("Tenant: ${tenant.name}")
+                println("Rent: ${tenant.rentAmount}")
+                println("Rent paid: ${tenant.isPaid}")
+            }
+        }
+    }
 }
+
